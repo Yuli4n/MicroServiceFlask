@@ -31,7 +31,8 @@ def search():
     """
     results = db.session.execute(query, {'dni': dni}).fetchall()
     print(f"Products found: {results}")  # Imprimir los productos encontrados
-    return render_template('index.html', products=results, dni=dni)
+    customer_name = results[0][0] if results else None  # Obtener el nombre del cliente
+    return render_template('index.html', products=results, dni=dni, customer_name=customer_name)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
