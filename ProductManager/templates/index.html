@@ -15,14 +15,14 @@
       <h1 class="mt-5">Search Financial Products</h1>
       <form method="POST" action="/search" class="mt-3 mb-5">
         <div class="form-group">
-          <label for="email">Enter Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+          <label for="dni">Enter dni</label>
+          <input type="dni" class="form-control" id="dni" name="dni" placeholder="Enter dni" required>
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
       </form>
 
       {% if products is not none %}
-        <h2>Results for {{ email }}</h2>
+        <h2>Results for {{ dni }}</h2>
         {% if products %}
           <table class="table table-bordered">
             <thead>
@@ -41,7 +41,7 @@
             </tbody>
           </table>
         {% else %}
-          <p>No products found for this email.</p>
+          <p>No products found for this dni.</p>
         {% endif %}
       {% endif %}
     </div>

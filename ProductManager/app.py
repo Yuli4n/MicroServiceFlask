@@ -20,17 +20,17 @@ def index():
 
 @app.route('/search', methods=['POST'])
 def search():
-    email = request.form.get('email')
-    print(f"Searching for email: {email}")  # Imprimir el correo electrónico buscado
+    dni = request.form.get('dni')
+    print(f"Searching for dni: {dni}")  # Imprimir el correo electrónico buscado
     query = """
     SELECT financial_products.product_name, financial_products.quota
     FROM customers
     JOIN financial_products ON customers.id = financial_products.customer_id
-    WHERE customers.email = :email
+    WHERE customers.dni = :dni
     """
-    results = db.session.execute(query, {'email': email}).fetchall()
+    results = db.session.execute(query, {'dni': dni}).fetchall()
     print(f"Products found: {results}")  # Imprimir los productos encontrados
-    return render_template('index.html', products=results, email=email)
+    return render_template('index.html', products=results, dni=dni)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
