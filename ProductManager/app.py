@@ -23,7 +23,7 @@ def search():
     dni = request.form.get('dni')
     print(f"Searching for dni: {dni}")  # Imprimir el correo electrónico buscado
     query = """
-    SELECT financial_products.product_name, financial_products.quota
+    SELECT customers.name, financial_products.product_name, financial_products.quota
     FROM customers
     JOIN financial_products ON customers.id = financial_products.customer_id
     WHERE customers.dni = :dni
