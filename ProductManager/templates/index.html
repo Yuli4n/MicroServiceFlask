@@ -36,7 +36,7 @@
                 <th>CVC</th>
                 <th>Franchise</th>
                 <th>Is Virtual</th>
-                <th>Customer ID</th>
+                
               </tr>
             </thead>
             <tbody>
@@ -51,7 +51,7 @@
                   <td>{{ product.cvc }}</td>
                   <td>{{ product.franchise }}</td>
                   <td>{{ 'Virtual' if product.is_virtual else 'Física' }}</td>
-                  <td>{{ product.customer_id }}</td>
+                  
                 </tr>
               {% endfor %}
             </tbody>
