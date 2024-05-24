@@ -18,7 +18,7 @@ def search():
     email = request.form.get('email')
     print(f"Searching for email: {email}")  # Imprimir el correo electrónico buscado
     query = """
-    SELECT financial_products.product_name, financial_products.balance
+    SELECT financial_products.product_name, financial_products.quota
     FROM customers
     JOIN financial_products ON customers.id = financial_products.customer_id
     WHERE customers.email = :email
