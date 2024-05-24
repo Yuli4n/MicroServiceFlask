@@ -13,7 +13,7 @@ db.init_app(app)
 def index():
     return render_template('index.html')
 
-@app.route('/search', methods=['POST'])
+@app.route('/search', methods=['GET'])
 def search():
     email = request.form.get('email')
     customer = Customer.query.filter_by(email=email).first()
