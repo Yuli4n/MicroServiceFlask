@@ -15,8 +15,8 @@
       <h1 class="mt-5">Search Financial Products</h1>
       <form method="POST" action="/search" class="mt-3 mb-5">
         <div class="form-group">
-          <label for="dni">Enter dni</label>
-          <input type="dni" class="form-control" id="dni" name="dni" placeholder="Enter dni" required>
+          <label for="dni">Enter DNI</label>
+          <input type="text" class="form-control" id="dni" name="dni" placeholder="Enter DNI" required>
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
       </form>
@@ -29,6 +29,14 @@
               <tr>
                 <th>Product Name</th>
                 <th>Quota</th>
+                <th>Debt</th>
+                <th>Interest</th>
+                <th>Card Number</th>
+                <th>Expiration Date</th>
+                <th>CVC</th>
+                <th>Franchise</th>
+                <th>Is Virtual</th>
+                <th>Customer ID</th>
               </tr>
             </thead>
             <tbody>
@@ -36,12 +44,20 @@
                 <tr>
                   <td>{{ product.product_name }}</td>
                   <td>{{ product.quota | currency }}</td>
+                  <td>{{ product.debt | currency }}</td>
+                  <td>{{ product.interest * 100 }}%</td>
+                  <td>{{ product.card_number }}</td>
+                  <td>{{ product.expiration_date }}</td>
+                  <td>{{ product.cvc }}</td>
+                  <td>{{ product.franchise }}</td>
+                  <td>{{ 'Virtual' if product.is_virtual else 'Física' }}</td>
+                  <td>{{ product.customer_id }}</td>
                 </tr>
               {% endfor %}
             </tbody>
           </table>
         {% else %}
-          <p>No products found for this dni.</p>
+          <p>No products found for this DNI.</p>
         {% endif %}
       {% endif %}
     </div>
