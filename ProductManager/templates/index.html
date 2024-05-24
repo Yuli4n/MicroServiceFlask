@@ -35,7 +35,7 @@
               {% for product in products %}
                 <tr>
                   <td>{{ product.product_name }}</td>
-                  <td>{{ product.quota }}</td>
+                  <td>{{ product.quota | currency }}</td>
                 </tr>
               {% endfor %}
             </tbody>
