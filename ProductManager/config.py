@@ -1,6 +1,6 @@
 import os
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://user:password@localhost:5432/financial_db')
+    SQLALCHEMY_DATABASE_URI = 'postgresql://products_user:isis2503@10.128.0.82:5432/products_db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = os.getenv('SECRET_KEY', 'mysecretkey')
+    SECRET_KEY = 'MySecretKey'
