@@ -2,7 +2,6 @@ from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 from config import Config
 from models import db
-import locale
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -10,13 +9,10 @@ Bootstrap(app)
 
 db.init_app(app)
 
-# Configurar la localización para el formato de moneda
-locale.setlocale(locale.LC_ALL, '')
-
-# Definir el filtro personalizado
+# Definir el filtro personalizado para formatear como COP
 @app.template_filter('currency')
 def currency_filter(value):
-    return locale.currency(value, grouping=True)
+    return f"${value:,.0f}".replace(",", ".")
 
 @app.route('/')
 def index():
