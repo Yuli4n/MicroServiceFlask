@@ -27,6 +27,7 @@ def search():
     FROM customers
     JOIN financial_products ON customers.id = financial_products.customer_id
     WHERE customers.dni = :dni
+    ORDER BY financial_products.quota
     """
     results = db.session.execute(query, {'dni': dni}).fetchall()
     print(f"Products found: {results}")  # Imprimir los productos encontrados
