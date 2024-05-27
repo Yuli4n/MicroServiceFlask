@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_bootstrap import Bootstrap
 from config import Config
 from models import db
@@ -35,7 +35,18 @@ def search():
     print(f"Products found: {results}")  # Imprimir los productos encontrados
     customer_name = results[0][0] if results else None  # Obtener el nombre del cliente
     products = [dict(zip(result.keys(), result)) for result in results]  # Convertir resultados a diccionarios
-    return render_template('index.html', products=products, dni=dni, customer_name=customer_name)
+    if not results:
+        return jsonify({'error': 'No products found for this DNI.'}), 404
+
+    response = {
+        'customer_name': customer_name,
+        'products': products
+    }
+
+    return jsonify(response)
+
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
