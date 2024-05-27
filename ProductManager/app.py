@@ -18,9 +18,9 @@ def currency_filter(value):
 def index():
     return render_template('index.html')
 
-@app.route('/search', methods=['POST'])
-def search():
-    dni = request.form.get('dni')
+@app.route('/search/<string:dni>', methods=['GET'])
+def search(dni):
+    #dni = request.form.get('dni')
     print(f"Searching for DNI: {dni}")  # Imprimir el DNI buscado
     query = """
     SELECT customers.name, financial_products.product_name, financial_products.quota, financial_products.debt, 
